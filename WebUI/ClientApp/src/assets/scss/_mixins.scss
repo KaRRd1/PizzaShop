@@ -1,0 +1,32 @@
+@mixin d-flex(
+  $justify-content: initial,
+  $align-items: initial,
+  $direction: initial
+) {
+  display: flex;
+  @if $justify-content != initial {
+    justify-content: $justify-content;
+  }
+  @if $align-items != initial {
+    align-items: $align-items;
+  }
+  @if $direction != initial {
+    flex-direction: $direction;
+  }
+}
+
+$screen-breakpoints: (
+  sm: 768px,
+  lg: 992px,
+  xl: 1180px,
+);
+
+@mixin respond-to($breakpoint) {
+  @each $mediaBreakpoint, $size in $screen-breakpoints {
+    @if $mediaBreakpoint == $breakpoint {
+      @media only screen and (max-width: $size) {
+        @content;
+      }
+    }
+  }
+}

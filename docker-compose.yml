@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  webui:
+    build: .
+    ports:
+      - "5000:80"
+    depends_on: 
+      db: 
+        condition: service_healthy
+    
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password123"
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "Password123" -Q "SELECT 1" -b -o /dev/null
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+    ports:
+      - "1433:1433"

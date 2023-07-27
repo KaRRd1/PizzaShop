@@ -1,0 +1,76 @@
+@import "./reset";
+@import "./mixins";
+@import "./fonts";
+
+body {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  @include respond-to(sm) {
+    font-size: 14px;
+  }
+}
+
+img {
+  //height: auto;
+  //width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 1290px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+p {
+  margin-bottom: 8px;
+  line-height: 1.375;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 40px;
+
+  @include respond-to(sm) {
+    margin-bottom: 12px;
+    font-size: 28px;
+  }
+}
+
+h2 {
+  font-size: 32px;
+
+  @include respond-to(sm) {
+    font-size: 24px;
+  }
+}
+
+h3 {
+  font-size: 24px;
+
+  @include respond-to(sm) {
+    font-size: 14px;
+  }
+}
+
+h4 {
+  font-size: 20px;
+
+  @include respond-to(sm) {
+    font-size: 14px;
+  }
+}
